@@ -23,7 +23,7 @@ acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
 delimiters = [', ', '---', '--', ' --- ', ' -- ', ' ']
 
-urls =  ['http://books.google.com/books?id=TUtFgWOISxMC&lpg=PA124&ots=JkLLPw4h9o&pg=PA124#v=onepage&q&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP5&ots=rrAzJ_8JYR&pg=PA172#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA292#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA347#v=onepage&q=minutes&f=false', '', '', ''] 
+urls =  ['http://books.google.com/books?id=TUtFgWOISxMC&lpg=PA124&ots=JkLLPw4h9o&pg=PA124#v=onepage&q&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP5&ots=rrAzJ_8JYR&pg=PA172#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA292#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA347#v=onepage&q=minutes&f=false', 'http://wcm1.web.rice.edu/slave-sales-on-twitter.html', '', '', ''] 
 
 snippets = [random.choice(x) for x in [times, acts]]
 
