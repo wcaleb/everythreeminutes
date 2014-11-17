@@ -12,7 +12,7 @@ access_token_secret = settings['access_token_secret']
 times = ['in the antebellum American South']
 times.append('#OnThisDay in ' + random.choice([str(random.randint(1820,1860)), 'history', '#history']))
 
-people   = ['a slave', 'a person', 'an enslaved person', 'someone', 'a black person', 'an African American']
+people   = ['a slave', 'a person', 'an enslaved person', 'someone', 'a black person', 'a human being']
 roles    = ['child', 'parent', 'grandparent', 'grandchild', 'friend']
 verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
