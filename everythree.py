@@ -9,28 +9,41 @@ api_secret = settings['consumer_secret']
 access_token = settings['access_token_key']
 access_token_secret = settings['access_token_secret']
 
+# Create list of time phrases
 times = ['in the antebellum American South']
 times.append('#OnThisDay in ' + random.choice([str(random.randint(1820,1860)), 'history', '#history']))
 
+# Create lists of people, roles, and verbs
 people   = ['a slave', 'a person', 'an enslaved person', 'someone', 'a black person', 'a human being']
 roles    = ['child', 'parent', 'grandparent', 'grandchild', 'friend']
 verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
 
+# Create passive and active forms of subject-verb-object pairs
 acts = ['someone just']
 acts[0] = acts[0] + ' ' + random.choice(verbs) + ' ' + random.choice(people)
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
+# Create list of delimiters to separate phrases
 delimiters = [', ', '---', '--', ' --- ', ' -- ', ' ']
 
-urls =  ['http://books.google.com/books?id=TUtFgWOISxMC&lpg=PA124&ots=JkLLPw4h9o&pg=PA124#v=onepage&q&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP5&ots=rrAzJ_8JYR&pg=PA172#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA292#v=onepage&q=minutes&f=false', 'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA347#v=onepage&q=minutes&f=false', 'http://wcm1.web.rice.edu/slave-sales-on-twitter.html', '', '', ''] 
+# Create list of URLs for tweets
+urls =  ['http://books.google.com/books?id=TUtFgWOISxMC&lpg=PA124&ots=JkLLPw4h9o&pg=PA124#v=onepage&q&f=false',
+         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP5&ots=rrAzJ_8JYR&pg=PA172#v=onepage&q=minutes&f=false',
+         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA292#v=onepage&q=minutes&f=false',
+         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA347#v=onepage&q=minutes&f=false',
+         'http://wcm1.web.rice.edu/slave-sales-on-twitter.html',
+         'http://hitchcock.itc.virginia.edu/Slavery/details.php?categorynum=6&theRecord=42',
+         '', '', ''] 
 
+# Get a random item from the times and acts lists; join with delimiters
 snippets = [random.choice(x) for x in [times, acts]]
-
 string = (random.choice(delimiters)).join(snippets).rstrip('- ,')
 
+# Generate tweet by adding random URL to string
 tweet =  string[0].upper() + string[1:] + '. ' + random.choice(urls)
 
+# Print statements for local testing
 # print tweet + random.choice(urls)
 # print len(tweet)
 
