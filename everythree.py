@@ -10,7 +10,7 @@ access_token = settings['access_token_key']
 access_token_secret = settings['access_token_secret']
 
 # Create list of time phrases
-times = ['in the antebellum American South']
+times = ['in the antebellum American South', 'in the antebellum United States']
 times.append('#OnThisDay in ' + random.choice([str(random.randint(1820,1860)), 'history', '#history']))
 
 # Create lists of people, roles, and verbs
