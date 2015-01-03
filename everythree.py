@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import random, twitter # https://github.com/bear/python-twitter
+import csv, os, random, twitter # https://github.com/bear/python-twitter
+from PIL import Image
 from OAuthSettings import settings
 
 log_file = '/home/wcm1/.e3m'
@@ -8,6 +9,46 @@ api_key = settings['consumer_key']
 api_secret = settings['consumer_secret']
 access_token = settings['access_token_key']
 access_token_secret = settings['access_token_secret']
+
+def log_errors(message):
+    l = open(log_file, 'a')
+    l.write('Error\t' + str(message) + '\n')
+    l.close()
+
+def post_with_image():
+    '''
+    Periodically, the bot will use this function to post an image of a
+    primary source related to a slave sale. We get a random file from the `images/`
+    directory and crop it if it is larger than a certain width. We look up metadata
+    about the file in a CSV spreadsheet so that a permalink to the full image and
+    a name of a person sold (if available) can be included in the tweet.
+    '''
+    path = '/home/wcm1/everythreeminutes/images/'
+    meta = open('/home/wcm1/everythreeminutes/images.csv', 'rU')
+    reader = csv.DictReader(meta)
+    newdict = {}
+    for row in reader:
+        newdict.update({row['FILE']:[row['PERMALINK'], row['NAMES']]})
+    image = random.choice(os.listdir(path))
+    string = 'A person was sold about every 3 minutes in the antebellum era. '
+    if newdict[image][1]:
+        string = string + 'One was called ' + random.choice(str.split(newdict[image][1], ', ')) + '. '
+    string = string + '\n\n' + newdict[image][0]
+    j = Image.open(path + image)
+    if j.size[0] > 506:
+       left = random.randint(0, j.size[0] - 506)
+       upper = random.randint(0, j.size[1] - 253)
+       j.crop((left, upper, left + 506, upper + 253)).save(path + 'pic_to_tweet.jpeg')
+       image = 'pic_to_tweet.jpeg'
+    try:
+       api = twitter.Api(consumer_key = api_key, consumer_secret = api_secret, access_token_key = access_token, access_token_secret = access_token_secret)
+       status = api.PostMedia(string, path + image)
+    except twitter.TwitterError, error:
+       log_errors(error.message)
+    exit()
+
+if random.randint(0, 200) < 10:
+    post_with_image()
 
 # Create list of time phrases
 times = ['in the antebellum American South', 'in the antebellum United States']
@@ -50,11 +91,9 @@ tweet =  string[0].upper() + string[1:] + '. ' + random.choice(urls)
 # Try to post tweet to Twitter
 # Comment out for local testing without posting
 
-l = open(log_file, 'a')
 try:
     api = twitter.Api(consumer_key = api_key, consumer_secret = api_secret, access_token_key = access_token, access_token_secret = access_token_secret)
     status = api.PostUpdate(tweet)
 except twitter.TwitterError, error:
-    l.write('Error\t' + str(error.message) + '\n')
-l.close()
+    log_errors(error.message)
 
