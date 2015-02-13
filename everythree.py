@@ -61,8 +61,8 @@ verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
 
 # Create passive and active forms of subject-verb-object pairs
-acts = ['someone just']
-acts[0] = acts[0] + ' ' + random.choice(verbs) + ' ' + random.choice(people)
+acts = ['someone just', 'a white slaver just']
+acts = [a + ' ' + random.choice(verbs) + ' ' + random.choice(people) for a in acts]
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
 # Create list of delimiters to separate phrases
