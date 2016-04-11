@@ -10,10 +10,22 @@ api_secret = settings['consumer_secret']
 access_token = settings['access_token_key']
 access_token_secret = settings['access_token_secret']
 
+api = twitter.Api(consumer_key = api_key, consumer_secret = api_secret, access_token_key = access_token, access_token_secret = access_token_secret)
+
+count = api.GetUser(screen_name='every3minutes').statuses_count
+
 def log_errors(message):
     l = open(log_file, 'a')
     l.write('Error\t' + str(message) + '\n')
     l.close()
+
+def post_milestone():
+    string = 'This account has tweeted ' + str(count) + ' times, each one representing a slave sold in the antebellum United States.'
+    try:
+       status = api.PostUpdate(string)
+    except twitter.TwitterError, error:
+       log_errors(error.message)
+    exit()
 
 def post_with_image():
     '''
@@ -41,14 +53,10 @@ def post_with_image():
        j.crop((left, upper, left + 506, upper + 253)).save(path + 'pic_to_tweet.jpeg')
        image = 'pic_to_tweet.jpeg'
     try:
-       api = twitter.Api(consumer_key = api_key, consumer_secret = api_secret, access_token_key = access_token, access_token_secret = access_token_secret)
        status = api.PostMedia(string, path + image)
     except twitter.TwitterError, error:
        log_errors(error.message)
     exit()
-
-if random.randint(0, 200) < 10:
-    post_with_image()
 
 # Create list of time phrases
 times = ['in the antebellum American South', 'in the antebellum United States']
@@ -91,8 +99,13 @@ tweet =  string[0].upper() + string[1:] + '. ' + random.choice(urls)
 # Try to post tweet to Twitter
 # Comment out for local testing without posting
 
+if (float(count) % 10000) == 0:
+    post_milestone()
+
+if random.randint(0, 200) < 10:
+    post_with_image()
+
 try:
-    api = twitter.Api(consumer_key = api_key, consumer_secret = api_secret, access_token_key = access_token, access_token_secret = access_token_secret)
     status = api.PostUpdate(tweet)
 except twitter.TwitterError, error:
     log_errors(error.message)
