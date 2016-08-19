@@ -51,7 +51,7 @@ if random.randint(0, 200) < 10:
     post_with_image()
 
 # Create list of time phrases
-times = ['in the antebellum American South', 'in the antebellum United States']
+times = ['in the antebellum American South', 'in the antebellum United States', 'in the antebellum U.S. South', 'in the antebellum U.S.']
 times.append('#OnThisDay in ' + random.choice([str(random.randint(1820,1860)), 'history', '#history']))
 
 # Create lists of people, roles, and verbs
@@ -61,7 +61,7 @@ verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
 
 # Create passive and active forms of subject-verb-object pairs
-acts = ['someone just', 'a white slaver just']
+acts = ['someone just', 'an American just', 'a person just', 'a white slaver just']
 acts = [a + ' ' + random.choice(verbs) + ' ' + random.choice(people) for a in acts]
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
@@ -69,12 +69,11 @@ acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 delimiters = [', ', '---', '--', ' --- ', ' -- ', ' ']
 
 # Create list of URLs for tweets
-urls =  ['http://books.google.com/books?id=TUtFgWOISxMC&lpg=PA124&ots=JkLLPw4h9o&pg=PA124#v=onepage&q&f=false',
-         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP5&ots=rrAzJ_8JYR&pg=PA172#v=onepage&q=minutes&f=false',
-         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA292#v=onepage&q=minutes&f=false',
-         'http://books.google.com/books?id=-dbFUlQvcRYC&lpg=PP11&ots=rrAzJ-6IUU&pg=PA347#v=onepage&q=minutes&f=false',
-         'http://wcm1.web.rice.edu/slave-sales-on-twitter.html',
-         'http://hitchcock.itc.virginia.edu/Slavery/details.php?categorynum=6&theRecord=42',
+urls =  [
+         'https://books.google.com/books?id=bZJJCAAAQBAJ&lpg=PA172&ots=856q5Cdmat&dq=steven%20deyle%20%22startling%20statistic%22&pg=PA172#v=onepage&q=steven%20deyle%20%22startling%20statistic%22&f=false',
+         'https://books.google.com/books?id=-dbFUlQvcRYC&lpg=PA292&ots=rrGuP05JVQ&dq=steven%20deyle%20%22the%20magnitude%20of%20this%20number%22&pg=PA292#v=onepage&q=steven%20deyle%20%22the%20magnitude%20of%20this%20number%22&f=false',
+         'http://www.owlnet.rice.edu/~wcm1/slave-sales-on-twitter.html',
+         'http://docsouth.unc.edu/neh/bibb/ill18.html',
          '', '', '', '', ''] 
 
 # Get a random item from the times and acts lists; join with delimiters
