@@ -69,7 +69,7 @@ verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
 
 # Create passive and active forms of subject-verb-object pairs
-acts = ['someone', 'an American', 'a white American', 'a person', 'a white slaver', 'a white person', 'a slaver']
+acts = ['someone', 'an American', 'a white American', 'a white slaver', 'a white person', 'a slaver']
 acts = [a + ' just ' + random.choice(verbs) + ' ' + random.choice(people) for a in acts]
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
