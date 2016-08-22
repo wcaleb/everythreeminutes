@@ -69,8 +69,8 @@ verbs    = ['sold', 'bought', 'purchased', 'traded']
 people   = people + [p + r for p in [p + '\'s ' for p in people] for r in roles]
 
 # Create passive and active forms of subject-verb-object pairs
-acts = ['someone just', 'an American just', 'a person just', 'a white slaver just']
-acts = [a + ' ' + random.choice(verbs) + ' ' + random.choice(people) for a in acts]
+acts = ['someone', 'an American', 'a white American', 'a person', 'a white slaver', 'a white person', 'a slaver']
+acts = [a + ' just ' + random.choice(verbs) + ' ' + random.choice(people) for a in acts]
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
 # Create list of delimiters to separate phrases
@@ -89,7 +89,7 @@ urls =  [
          'http://wcmcdaniel.web.rice.edu/slave-sales-on-twitter.html',
          'http://caleb.mcdaniel.web.rice.edu/slave-sales-on-twitter.html',
          'http://hitchcock.itc.virginia.edu/Slavery/details.php?categorynum=6&theRecord=42'
-         '', '', '', '', ''] 
+         '', '', '', '', '', '', '', ''] 
 
 # Get a random item from the times and acts lists; join with delimiters
 snippets = [random.choice(x) for x in [times, acts]]
