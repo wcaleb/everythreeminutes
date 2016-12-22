@@ -74,7 +74,7 @@ acts = [a + ' just ' + random.choice(verbs) + ' ' + random.choice(people) for a 
 acts.append(random.choice(people) + ' was just ' + random.choice(verbs))
 
 # Create list of delimiters to separate phrases
-delimiters = [', ', '---', '--', ' --- ', ' -- ', ' ']
+delimiters = [', ', ',  ', '---', '--', ' --- ', ' -- ', ' ', '  ']
 
 # Create list of URLs for tweets
 urls =  [
