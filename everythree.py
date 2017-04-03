@@ -88,7 +88,7 @@ urls =  [
          'http://docsouth.unc.edu/neh/bibb/ill18.html',
          'http://wcmcdaniel.web.rice.edu/slave-sales-on-twitter.html',
          'http://caleb.mcdaniel.web.rice.edu/slave-sales-on-twitter.html',
-         'http://hitchcock.itc.virginia.edu/Slavery/details.php?categorynum=6&theRecord=42'
+         'http://www.slaveryimages.org/details.php?categorynum=6&theRecord=42&recordCount=75',
          '', '', '', '', '', '', '', ''] 
 
 # Get a random item from the times and acts lists; join with delimiters
