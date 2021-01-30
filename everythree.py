@@ -53,7 +53,7 @@ def post_with_image():
        j.crop((left, upper, left + 506, upper + 253)).save(path + 'pic_to_tweet.jpeg')
        image = 'pic_to_tweet.jpeg'
     try:
-       status = api.PostMedia(string, path + image)
+       status = api.PostUpdate(string, path + image)
     except twitter.TwitterError, error:
        log_errors(error.message)
     exit()
